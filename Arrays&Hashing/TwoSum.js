@@ -6,22 +6,21 @@
 
 let nums = [3,7,3,5,2,8];
 let target = 8;
-// Output: [0,1]
 
 const twoSum = (array, target) => 
 {
-    let hashtable = {};
+   let hashtable = {};
 
-    for(let i = 0; i < array.length; i++)
+   for(let i = 0; i < array.length; i++)
+   {
+    let difference = target - array[i];
+
+    if(hashtable.hasOwnProperty(difference))
     {
-        let difference = target - array[i];
-
-        if(hashtable.hasOwnProperty(difference))
-        {
-            return [hashtable[difference], i]
-        }
-
-        hashtable[array[i]] = i;
+        return [hashtable[difference], i];
     }
+
+    hashtable[array[i]] = i;
+   }
 }
 console.log(twoSum(nums, target));
