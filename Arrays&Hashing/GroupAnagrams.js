@@ -5,30 +5,30 @@
 let strs = ["eat","tea","tan","ate","nat","bat"];
 
 const groupAnagrams = (strs) => {
-    let answer = {};
+    let respuesta = {};
 
     for(let s of strs)
     {
-        let count = Array(26).fill(0);
+        let abc = new Array(26).fill(0);
 
         for(let c of s)
         {
-            count[c.charCodeAt(0) - 'a'.charCodeAt(0)] += 1 
+            abc[c.charCodeAt(0) - 'a'.charCodeAt(0)]++;
         }
 
-        let key = count.toString();
+        let key = abc.toString();
 
-        if(answer[key])
+        if(respuesta[key])
         {
-            answer[key].push(s);
-        }else
-        {
-            answer[key] = [s];
+            respuesta[key].push(s);
         }
-
+        else
+        {
+            respuesta[key] = [s];
+        }
     }
 
-    return Object.values(answer);
+    return Object.values(respuesta);
 }
 
 

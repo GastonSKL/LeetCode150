@@ -10,27 +10,33 @@ const topKFrequent = (nums, k) =>
 
    for(let i = 0; i < nums.length; i++)
    {
+
         if(!map.has(nums[i]))
         {
-            map.set(nums[i], 1);        
-        }
-        else
+            map.set(nums[i], 1)
+        }else
         {
-            map.set(nums[i], map.get(nums[i]) + 1);
+            map.set(nums[i], map.get(nums[i]) + 1)
         }
+
    }
 
    let mapSorted = new Map([...map.entries()].sort((a,b) => b[1] - a[1]));
-   let result = [];
+   let respuesta = [];
    let count = 0;
-   for(let[key, value] of mapSorted.entries())
+
+   for(let [key, value] of mapSorted.entries())
    {
         if(count < k)
         {
-            result.push(key);
+            respuesta.push(key)
             count++;
-        } 
+        }
    }
 
-   return result;
+   return respuesta;
+
 };
+
+console.log(topKFrequent(nums,k));
+
